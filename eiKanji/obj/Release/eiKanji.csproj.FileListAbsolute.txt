@@ -8,3 +8,7 @@ C:\Users\Jollyrancher\Documents\Code\Visual Studio 2010\eiKanji\eiKanji\obj\Rele
 C:\Users\Jollyrancher\Documents\Code\Visual Studio 2010\eiKanji\eiKanji\obj\Release\eiKanji.csproj.GenerateResource.Cache
 C:\Users\Jollyrancher\Documents\Code\Visual Studio 2010\eiKanji\eiKanji\obj\Release\eiKanji.exe
 C:\Users\Jollyrancher\Documents\Code\Visual Studio 2010\eiKanji\eiKanji\obj\Release\eiKanji.pdb
+C:\Users\Jollyrancher\Documents\Code\Visual Studio 2010\eiKanji\eiKanji\obj\Release\eiKanji.EditView.resources
+C:\Users\Jollyrancher\Documents\Code\Visual Studio 2010\eiKanji\eiKanji\obj\Release\eiKanji.SearchView.resources
+C:\Users\Jollyrancher\Documents\Code\Visual Studio 2010\eiKanji\eiKanji\obj\Release\eiKanji.SearchPane.resources
+C:\Users\Jollyrancher\Documents\Code\Visual Studio 2010\eiKanji\eiKanji\obj\Release\eiKanji.ComponentPane.resources

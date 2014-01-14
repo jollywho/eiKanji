@@ -48,6 +48,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ComponentPane.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ComponentPane.Designer.cs">
+      <DependentUpon>ComponentPane.cs</DependentUpon>
+    </Compile>
     <Compile Include="DB_Handle.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -57,6 +63,27 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="EditView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="EditView.Designer.cs">
+      <DependentUpon>EditView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SearchPane.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SearchPane.Designer.cs">
+      <DependentUpon>SearchPane.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SearchView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SearchView.Designer.cs">
+      <DependentUpon>SearchView.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="ComponentPane.resx">
+      <DependentUpon>ComponentPane.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -70,6 +97,15 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="EditView.resx">
+      <DependentUpon>EditView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SearchPane.resx">
+      <DependentUpon>SearchPane.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SearchView.resx">
+      <DependentUpon>SearchView.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

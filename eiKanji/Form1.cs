@@ -13,42 +13,39 @@ namespace eiKanji
 {
     public partial class Form1 : Form
     {
+        EditView ev;
+        SearchView sv;
+
         public Form1()
         {
             InitializeComponent();
-            gvComp.Rows.Add("", "", "");
+            ev = new EditView();
+            sv = new SearchView();
+            this.Controls.Add(ev);
+            ev.Dock = DockStyle.Fill;
+            sv.Dock = DockStyle.Fill;
         }
 
-        private void gvComp_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        /// <summary>
+        /// Intercept form-level keypress events:
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
-            if (gvComp.CurrentCell.Value == null) 
-                return;
-
-            string col = gvComp.Columns[gvComp.CurrentCell.ColumnIndex].HeaderText;
-            string val = gvComp.CurrentCell.Value.ToString();
-            DataTable dt = DB_Handle.GetDataTable(string.Format(@"SELECT * FROM kanji WHERE {0}='{1}'", col, val));
-
-            if (dt.Rows.Count > 0)
+            if (e.Modifiers == Keys.Control && e.KeyCode == Keys.D1)
             {
-                gvComp.SelectedRows[0].Cells[0].Value = dt.Rows[0][0];
-                gvComp.SelectedRows[0].Cells[1].Value = dt.Rows[0][1];
-                gvComp.SelectedRows[0].Cells[2].Value = dt.Rows[0][2];
-                gvComp.CurrentCell.ErrorText = "";
-                gvComp.Rows.Add("", "", "");
-                gvComp.CurrentCell = gvComp.Rows[gvComp.Rows.Count - 1].Cells[gvComp.CurrentCell.ColumnIndex];
+                this.Controls.Remove(sv);
+                this.Controls.Add(ev);
+                ev.Focus();
             }
-            else
+            if (e.Modifiers == Keys.Control && e.KeyCode == Keys.D2)
             {
-                gvComp.CurrentCell.ErrorText = "No record found.";
+                this.Controls.Remove(ev);
+                this.Controls.Add(sv);
+                sv.Focus();
             }
         }
-
-        private void gvComp_CellLeave(object sender, DataGridViewCellEventArgs e)
-        {
-            gvComp.CurrentCell.ErrorText = "";
-        }
-
-
 
     }
 }
