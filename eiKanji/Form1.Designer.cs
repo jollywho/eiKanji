@@ -38,11 +38,11 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.gvComp = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvComp)).BeginInit();
             this.SuspendLayout();
@@ -155,6 +155,7 @@
             // 
             // gvComp
             // 
+            this.gvComp.AllowUserToAddRows = false;
             this.gvComp.AllowUserToDeleteRows = false;
             this.gvComp.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.gvComp.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -165,17 +166,39 @@
             this.gvComp.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gvComp.GridColor = System.Drawing.SystemColors.ActiveCaption;
             this.gvComp.Location = new System.Drawing.Point(223, 3);
+            this.gvComp.MultiSelect = false;
             this.gvComp.Name = "gvComp";
             this.gvComp.RowHeadersVisible = false;
             this.tableLayoutPanel1.SetRowSpan(this.gvComp, 6);
             this.gvComp.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.gvComp.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gvComp.ShowCellErrors = false;
             this.gvComp.ShowCellToolTips = false;
             this.gvComp.ShowEditingIcon = false;
             this.gvComp.Size = new System.Drawing.Size(237, 256);
             this.gvComp.TabIndex = 4;
             this.gvComp.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvComp_CellEndEdit);
+            this.gvComp.CellLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvComp_CellLeave);
+            // 
+            // Column1
+            // 
+            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column1.FillWeight = 36.02257F;
+            this.Column1.HeaderText = "ID";
+            this.Column1.Name = "Column1";
+            // 
+            // Column3
+            // 
+            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column3.FillWeight = 27.99287F;
+            this.Column3.HeaderText = "Char";
+            this.Column3.Name = "Column3";
+            // 
+            // Column2
+            // 
+            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column2.FillWeight = 77.9135F;
+            this.Column2.HeaderText = "Keyword";
+            this.Column2.Name = "Column2";
             // 
             // label1
             // 
@@ -198,27 +221,6 @@
             this.label4.Size = new System.Drawing.Size(34, 13);
             this.label4.TabIndex = 12;
             this.label4.Text = "Note";
-            // 
-            // Column1
-            // 
-            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column1.FillWeight = 36.02257F;
-            this.Column1.HeaderText = "ID";
-            this.Column1.Name = "Column1";
-            // 
-            // Column3
-            // 
-            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column3.FillWeight = 27.99287F;
-            this.Column3.HeaderText = "Char";
-            this.Column3.Name = "Column3";
-            // 
-            // Column2
-            // 
-            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column2.FillWeight = 77.9135F;
-            this.Column2.HeaderText = "Keyword";
-            this.Column2.Name = "Column2";
             // 
             // Form1
             // 
