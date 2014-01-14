@@ -6,3 +6,5 @@ C:\Users\Jollyrancher\Documents\Code\Visual Studio 2010\eiKanji\eiKanji\obj\Debu
 C:\Users\Jollyrancher\Documents\Code\Visual Studio 2010\eiKanji\eiKanji\obj\Debug\eiKanji.csproj.GenerateResource.Cache
 C:\Users\Jollyrancher\Documents\Code\Visual Studio 2010\eiKanji\eiKanji\obj\Debug\eiKanji.exe
 C:\Users\Jollyrancher\Documents\Code\Visual Studio 2010\eiKanji\eiKanji\obj\Debug\eiKanji.pdb
+C:\Users\Jollyrancher\Documents\Code\Visual Studio 2010\eiKanji\eiKanji\bin\Debug\System.Data.SQLite.dll
+C:\Users\Jollyrancher\Documents\Code\Visual Studio 2010\eiKanji\eiKanji\obj\Debug\eiKanji.csprojResolveAssemblyReference.cache

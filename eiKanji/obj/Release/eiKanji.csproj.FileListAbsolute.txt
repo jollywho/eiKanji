@@ -1,0 +1,10 @@
+C:\Users\Jollyrancher\Documents\Code\Visual Studio 2010\eiKanji\eiKanji\bin\Release\eiKanji.exe.config
+C:\Users\Jollyrancher\Documents\Code\Visual Studio 2010\eiKanji\eiKanji\bin\Release\eiKanji.exe
+C:\Users\Jollyrancher\Documents\Code\Visual Studio 2010\eiKanji\eiKanji\bin\Release\eiKanji.pdb
+C:\Users\Jollyrancher\Documents\Code\Visual Studio 2010\eiKanji\eiKanji\bin\Release\System.Data.SQLite.dll
+C:\Users\Jollyrancher\Documents\Code\Visual Studio 2010\eiKanji\eiKanji\obj\Release\eiKanji.csprojResolveAssemblyReference.cache
+C:\Users\Jollyrancher\Documents\Code\Visual Studio 2010\eiKanji\eiKanji\obj\Release\eiKanji.Form1.resources
+C:\Users\Jollyrancher\Documents\Code\Visual Studio 2010\eiKanji\eiKanji\obj\Release\eiKanji.Properties.Resources.resources
+C:\Users\Jollyrancher\Documents\Code\Visual Studio 2010\eiKanji\eiKanji\obj\Release\eiKanji.csproj.GenerateResource.Cache
+C:\Users\Jollyrancher\Documents\Code\Visual Studio 2010\eiKanji\eiKanji\obj\Release\eiKanji.exe
+C:\Users\Jollyrancher\Documents\Code\Visual Studio 2010\eiKanji\eiKanji\obj\Release\eiKanji.pdb
