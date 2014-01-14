@@ -40,6 +40,9 @@
             this.gvComp = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvComp)).BeginInit();
             this.SuspendLayout();
@@ -51,7 +54,7 @@
             this.txtStory.Location = new System.Drawing.Point(3, 188);
             this.txtStory.Multiline = true;
             this.txtStory.Name = "txtStory";
-            this.txtStory.Size = new System.Drawing.Size(313, 71);
+            this.txtStory.Size = new System.Drawing.Size(346, 71);
             this.txtStory.TabIndex = 6;
             // 
             // txtID
@@ -59,7 +62,7 @@
             this.txtID.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.txtID.Location = new System.Drawing.Point(65, 14);
             this.txtID.Name = "txtID";
-            this.txtID.Size = new System.Drawing.Size(114, 20);
+            this.txtID.Size = new System.Drawing.Size(122, 20);
             this.txtID.TabIndex = 2;
             // 
             // txtKey
@@ -67,7 +70,7 @@
             this.txtKey.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.txtKey.Location = new System.Drawing.Point(65, 51);
             this.txtKey.Name = "txtKey";
-            this.txtKey.Size = new System.Drawing.Size(114, 20);
+            this.txtKey.Size = new System.Drawing.Size(122, 20);
             this.txtKey.TabIndex = 3;
             // 
             // txtChar
@@ -75,7 +78,7 @@
             this.txtChar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.txtChar.Location = new System.Drawing.Point(65, 88);
             this.txtChar.Name = "txtChar";
-            this.txtChar.Size = new System.Drawing.Size(114, 20);
+            this.txtChar.Size = new System.Drawing.Size(122, 20);
             this.txtChar.TabIndex = 5;
             // 
             // txtNote
@@ -83,15 +86,15 @@
             this.txtNote.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.txtNote.Location = new System.Drawing.Point(65, 125);
             this.txtNote.Name = "txtNote";
-            this.txtNote.Size = new System.Drawing.Size(114, 20);
+            this.txtNote.Size = new System.Drawing.Size(122, 20);
             this.txtNote.TabIndex = 4;
             // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 3;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 19.79167F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38.02083F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 42.44792F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 17.61364F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 36.36364F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 45.73864F));
             this.tableLayoutPanel1.Controls.Add(this.label5, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.label3, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 1);
@@ -114,7 +117,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28806F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28806F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 28.56517F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(319, 262);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(352, 262);
             this.tableLayoutPanel1.TabIndex = 8;
             // 
             // label5
@@ -152,12 +155,24 @@
             // 
             // gvComp
             // 
+            this.gvComp.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.gvComp.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gvComp.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2,
+            this.Column3});
             this.gvComp.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gvComp.Location = new System.Drawing.Point(185, 3);
+            this.gvComp.GridColor = System.Drawing.SystemColors.ActiveCaption;
+            this.gvComp.Location = new System.Drawing.Point(193, 3);
             this.gvComp.Name = "gvComp";
+            this.gvComp.RowHeadersVisible = false;
             this.tableLayoutPanel1.SetRowSpan(this.gvComp, 5);
-            this.gvComp.Size = new System.Drawing.Size(131, 179);
+            this.gvComp.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.gvComp.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.gvComp.ShowCellErrors = false;
+            this.gvComp.ShowCellToolTips = false;
+            this.gvComp.ShowEditingIcon = false;
+            this.gvComp.Size = new System.Drawing.Size(156, 179);
             this.gvComp.TabIndex = 8;
             // 
             // label1
@@ -182,14 +197,35 @@
             this.label4.TabIndex = 12;
             this.label4.Text = "Note";
             // 
+            // Column1
+            // 
+            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column1.FillWeight = 55.96447F;
+            this.Column1.HeaderText = "ID";
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column2.FillWeight = 55.96447F;
+            this.Column2.HeaderText = "Keyword";
+            this.Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column3.FillWeight = 50F;
+            this.Column3.HeaderText = "Char";
+            this.Column3.Name = "Column3";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(319, 262);
+            this.ClientSize = new System.Drawing.Size(352, 262);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "eiKanji";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvComp)).EndInit();
@@ -211,6 +247,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtNote;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
     }
 }
 

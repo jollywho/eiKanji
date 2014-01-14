@@ -1,1 +1,8 @@
 C:\Users\Jollyrancher\Documents\Code\Visual Studio 2010\eiKanji\eiKanji\bin\Debug\eiKanji.exe.config
+C:\Users\Jollyrancher\Documents\Code\Visual Studio 2010\eiKanji\eiKanji\bin\Debug\eiKanji.exe
+C:\Users\Jollyrancher\Documents\Code\Visual Studio 2010\eiKanji\eiKanji\bin\Debug\eiKanji.pdb
+C:\Users\Jollyrancher\Documents\Code\Visual Studio 2010\eiKanji\eiKanji\obj\Debug\eiKanji.Form1.resources
+C:\Users\Jollyrancher\Documents\Code\Visual Studio 2010\eiKanji\eiKanji\obj\Debug\eiKanji.Properties.Resources.resources
+C:\Users\Jollyrancher\Documents\Code\Visual Studio 2010\eiKanji\eiKanji\obj\Debug\eiKanji.csproj.GenerateResource.Cache
+C:\Users\Jollyrancher\Documents\Code\Visual Studio 2010\eiKanji\eiKanji\obj\Debug\eiKanji.exe
+C:\Users\Jollyrancher\Documents\Code\Visual Studio 2010\eiKanji\eiKanji\obj\Debug\eiKanji.pdb
