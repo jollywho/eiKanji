@@ -42,9 +42,9 @@
             this.lblId.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.lblId.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblId.Font = new System.Drawing.Font("Meiryo", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblId.Location = new System.Drawing.Point(117, 0);
+            this.lblId.Location = new System.Drawing.Point(103, 0);
             this.lblId.Name = "lblId";
-            this.lblId.Size = new System.Drawing.Size(51, 25);
+            this.lblId.Size = new System.Drawing.Size(44, 25);
             this.lblId.TabIndex = 7;
             this.lblId.Text = "label3";
             this.lblId.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -55,9 +55,9 @@
             this.lblKey.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.lblKey.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblKey.Font = new System.Drawing.Font("Meiryo", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblKey.Location = new System.Drawing.Point(60, 0);
+            this.lblKey.Location = new System.Drawing.Point(53, 0);
             this.lblKey.Name = "lblKey";
-            this.lblKey.Size = new System.Drawing.Size(51, 25);
+            this.lblKey.Size = new System.Drawing.Size(44, 25);
             this.lblKey.TabIndex = 6;
             this.lblKey.Text = "label2";
             this.lblKey.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -70,7 +70,7 @@
             this.lblChar.Font = new System.Drawing.Font("Meiryo", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblChar.Location = new System.Drawing.Point(3, 0);
             this.lblChar.Name = "lblChar";
-            this.lblChar.Size = new System.Drawing.Size(51, 25);
+            this.lblChar.Size = new System.Drawing.Size(44, 25);
             this.lblChar.TabIndex = 5;
             this.lblChar.Text = "label1";
             this.lblChar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -86,7 +86,7 @@
             this.rtxtStory.Name = "rtxtStory";
             this.rtxtStory.ReadOnly = true;
             this.rtxtStory.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
-            this.rtxtStory.Size = new System.Drawing.Size(165, 97);
+            this.rtxtStory.Size = new System.Drawing.Size(144, 97);
             this.rtxtStory.TabIndex = 4;
             this.rtxtStory.Text = "";
             // 
@@ -94,10 +94,10 @@
             // 
             this.tableLayoutPanel1.AutoScroll = true;
             this.tableLayoutPanel1.ColumnCount = 4;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.00082F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.00084F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.00084F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 24.9975F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.22221F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.22223F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.22223F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
             this.tableLayoutPanel1.Controls.Add(this.lblChar, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.lblKey, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.lblId, 2, 0);

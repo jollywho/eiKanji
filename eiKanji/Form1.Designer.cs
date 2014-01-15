@@ -40,7 +40,7 @@
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
-            this.MinimumSize = new System.Drawing.Size(400, 200);
+            this.MinimumSize = new System.Drawing.Size(500, 200);
             this.Name = "Form1";
             this.Text = "eik";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);

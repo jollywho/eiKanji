@@ -68,7 +68,7 @@
             this.AutoScrollMargin = new System.Drawing.Size(10, 10);
             this.AutoScrollMinSize = new System.Drawing.Size(10, 10);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.MinimumSize = new System.Drawing.Size(400, 200);
+            this.MinimumSize = new System.Drawing.Size(500, 300);
             this.Name = "SearchView";
             this.Size = new System.Drawing.Size(500, 300);
             this.tableLayoutPanel1.ResumeLayout(false);
