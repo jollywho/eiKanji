@@ -81,6 +81,7 @@
             this.gvComp.Size = new System.Drawing.Size(274, 294);
             this.gvComp.StandardTab = true;
             this.gvComp.TabIndex = 4;
+            this.gvComp.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvComp_CellDoubleClick);
             this.gvComp.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvComp_CellEnter);
             this.gvComp.CellLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvComp_CellLeave);
             this.gvComp.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvComp_CellMouseEnter);
@@ -93,6 +94,7 @@
             this.Column1.FillWeight = 36.02257F;
             this.Column1.HeaderText = "ID";
             this.Column1.Name = "Column1";
+            this.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // Column3
             // 
@@ -100,6 +102,7 @@
             this.Column3.FillWeight = 27.99287F;
             this.Column3.HeaderText = "Char";
             this.Column3.Name = "Column3";
+            this.Column3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // Column2
             // 
@@ -107,6 +110,7 @@
             this.Column2.FillWeight = 77.9135F;
             this.Column2.HeaderText = "Keyword";
             this.Column2.Name = "Column2";
+            this.Column2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // txtID
             // 
@@ -259,9 +263,6 @@
         #endregion
 
         private System.Windows.Forms.DataGridView gvComp;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label3;
@@ -273,5 +274,8 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtNote;
         private System.Windows.Forms.RichTextBox rtxtStory;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
     }
 }

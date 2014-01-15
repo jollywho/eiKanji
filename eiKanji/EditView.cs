@@ -30,6 +30,9 @@ namespace eiKanji
                 Lookup();
         }
 
+        //todo: validate + commit
+        // validate: all component keywords used in story.
+
         private void Lookup()
         {
             if (gvComp.CurrentCell.Value == null)
@@ -92,6 +95,14 @@ namespace eiKanji
                 gvComp.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.SelectionBackColor = Color.RoyalBlue;
                 gvComp.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor = Color.White;
             }
+        }
+
+        private void gvComp_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            string col = gvComp.Columns[gvComp.CurrentCell.ColumnIndex].HeaderText;
+            string val = gvComp.CurrentCell.Value.ToString();
+            DataTable dt = DB_Handle.GetDataTable(string.Format(@"SELECT id FROM kanji WHERE {0}='{1}'", col, val));
+            rtxtStory.Text += " {" + gvComp.Rows[e.RowIndex].Cells[0].Value.ToString().PadLeft(4, '0') + "} ";
         }
     }
 }

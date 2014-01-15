@@ -37,9 +37,10 @@ namespace eiKanji
                 {
                     SearchPane sp = new SearchPane();
                     sp.SetKey(dt.Rows[0][2].ToString());
-                    sp.Dock = DockStyle.Fill;
+                    tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(SizeType.AutoSize, 100));
+                    sp.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
                     tableLayoutPanel1.Controls.Add(sp, 0, i + 1);
-                    tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(SizeType.Absolute, 100));
+                    
                 }
             }
         }
