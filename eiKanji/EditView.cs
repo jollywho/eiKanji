@@ -17,7 +17,20 @@ namespace eiKanji
             gvComp.Rows.Add("", "", "");
         }
 
-        private void gvComp_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        private void gvComp_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+            {
+                if (gvComp.CurrentCell.RowIndex != gvComp.Rows.Count - 1)
+                {
+                    gvComp.Rows.RemoveAt(gvComp.CurrentCell.RowIndex);
+                }
+            }
+            else if (e.KeyCode == Keys.Enter)
+                Lookup();
+        }
+
+        private void Lookup()
         {
             if (gvComp.CurrentCell.Value == null)
                 return;
@@ -41,19 +54,43 @@ namespace eiKanji
             }
         }
 
-        private void gvComp_CellLeave(object sender, DataGridViewCellEventArgs e)
+        private void gvComp_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
         {
-            gvComp.CurrentCell.ErrorText = "";
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                gvComp.Rows[e.RowIndex].Cells[e.ColumnIndex].ErrorText = "";
+                gvComp.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.SelectionBackColor = Color.Aqua;
+                gvComp.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor = Color.Aqua;
+            }
         }
 
-        private void gvComp_KeyDown(object sender, KeyEventArgs e)
+        private void gvComp_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.KeyCode == Keys.Delete)
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
             {
-                if (gvComp.CurrentCell.RowIndex != gvComp.Rows.Count - 1)
-                {
-                    gvComp.Rows.RemoveAt(gvComp.CurrentCell.RowIndex);
-                }
+                gvComp.Rows[e.RowIndex].Cells[e.ColumnIndex].ErrorText = "";
+                gvComp.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.SelectionBackColor = Color.RoyalBlue;
+                gvComp.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor = Color.White;
+            }
+        }
+
+        private void gvComp_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                gvComp.Rows[e.RowIndex].Cells[e.ColumnIndex].ErrorText = "";
+                gvComp.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.SelectionBackColor = Color.Aqua;
+                gvComp.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor = Color.Aqua;
+            }
+        }
+
+        private void gvComp_CellLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                gvComp.Rows[e.RowIndex].Cells[e.ColumnIndex].ErrorText = "";
+                gvComp.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.SelectionBackColor = Color.RoyalBlue;
+                gvComp.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor = Color.White;
             }
         }
     }

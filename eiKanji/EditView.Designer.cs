@@ -53,6 +53,7 @@
             this.gvComp.AllowUserToAddRows = false;
             this.gvComp.AllowUserToDeleteRows = false;
             this.gvComp.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
+            this.gvComp.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
             this.gvComp.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gvComp.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -62,12 +63,12 @@
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Meiryo", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.RoyalBlue;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.gvComp.DefaultCellStyle = dataGridViewCellStyle1;
             this.gvComp.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gvComp.GridColor = System.Drawing.SystemColors.ActiveCaption;
+            this.gvComp.GridColor = System.Drawing.Color.White;
             this.gvComp.Location = new System.Drawing.Point(223, 3);
             this.gvComp.MultiSelect = false;
             this.gvComp.Name = "gvComp";
@@ -78,8 +79,12 @@
             this.gvComp.ShowCellToolTips = false;
             this.gvComp.ShowEditingIcon = false;
             this.gvComp.Size = new System.Drawing.Size(274, 294);
+            this.gvComp.StandardTab = true;
             this.gvComp.TabIndex = 4;
-            this.gvComp.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvComp_CellEndEdit);
+            this.gvComp.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvComp_CellEnter);
+            this.gvComp.CellLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvComp_CellLeave);
+            this.gvComp.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvComp_CellMouseEnter);
+            this.gvComp.CellMouseLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvComp_CellMouseLeave);
             this.gvComp.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gvComp_KeyDown);
             // 
             // Column1

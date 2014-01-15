@@ -39,9 +39,10 @@
             // lblId
             // 
             this.lblId.AutoSize = true;
+            this.lblId.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.lblId.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblId.Font = new System.Drawing.Font("Meiryo", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblId.Location = new System.Drawing.Point(155, 0);
+            this.lblId.Location = new System.Drawing.Point(154, 0);
             this.lblId.Name = "lblId";
             this.lblId.Size = new System.Drawing.Size(70, 25);
             this.lblId.TabIndex = 7;
@@ -51,9 +52,10 @@
             // lblKey
             // 
             this.lblKey.AutoSize = true;
+            this.lblKey.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.lblKey.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblKey.Font = new System.Drawing.Font("Meiryo", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblKey.Location = new System.Drawing.Point(79, 0);
+            this.lblKey.Location = new System.Drawing.Point(78, 0);
             this.lblKey.Name = "lblKey";
             this.lblKey.Size = new System.Drawing.Size(70, 25);
             this.lblKey.TabIndex = 6;
@@ -63,11 +65,12 @@
             // lblChar
             // 
             this.lblChar.AutoSize = true;
+            this.lblChar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.lblChar.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblChar.Font = new System.Drawing.Font("Meiryo", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblChar.Location = new System.Drawing.Point(3, 0);
             this.lblChar.Name = "lblChar";
-            this.lblChar.Size = new System.Drawing.Size(70, 25);
+            this.lblChar.Size = new System.Drawing.Size(69, 25);
             this.lblChar.TabIndex = 5;
             this.lblChar.Text = "label1";
             this.lblChar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -76,11 +79,15 @@
             // 
             this.rtxtStory.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.rtxtStory.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.rtxtStory.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tableLayoutPanel1.SetColumnSpan(this.rtxtStory, 3);
             this.rtxtStory.Font = new System.Drawing.Font("Meiryo", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rtxtStory.Location = new System.Drawing.Point(3, 28);
             this.rtxtStory.Name = "rtxtStory";
-            this.rtxtStory.Size = new System.Drawing.Size(222, 84);
+            this.rtxtStory.ReadOnly = true;
+            this.rtxtStory.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
+            this.rtxtStory.Size = new System.Drawing.Size(221, 84);
             this.rtxtStory.TabIndex = 4;
             this.rtxtStory.Text = "";
             // 
@@ -103,16 +110,17 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(230, 130);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(228, 128);
             this.tableLayoutPanel1.TabIndex = 8;
             // 
             // SearchPane
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "SearchPane";
-            this.Size = new System.Drawing.Size(230, 130);
+            this.Size = new System.Drawing.Size(228, 128);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
