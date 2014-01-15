@@ -16,9 +16,9 @@ namespace eiKanji
         ComponentPane cp;
         List<Color> colors = new List<Color>
             { 
-                Color.Azure, Color.SpringGreen, Color.BlueViolet, Color.CornflowerBlue,
-                Color.Crimson, Color.Orchid, Color.LightPink, Color.Moccasin,
-                Color.Salmon
+                Color.Turquoise, Color.Tomato, Color.BlueViolet,
+                Color.CornflowerBlue, Color.Crimson, Color.Orchid,
+                Color.LightPink, Color.Chocolate, Color.Magenta
             };
 
         public SearchPane()
@@ -47,15 +47,16 @@ namespace eiKanji
             for (int i = 0; i < dt.Rows.Count; i++)
             {
                 lst.Add(new KLabel(dt.Rows[i], colors[i]));
-                //search in story, color it
+                int pos = rtxtStory.Find(dt.Rows[i][2].ToString());
+                if (pos > 0)
+                {
+                    rtxtStory.Select(pos, dt.Rows[i][2].ToString().Length);
+                    rtxtStory.SelectionBackColor = colors[i];
+                    rtxtStory.SelectionColor = Color.White;
+                    rtxtStory.SelectionFont = new Font(this.Font, FontStyle.Bold);
+                }
             }
             cp.SetComponents(lst);
-
-            /** todo:
-             *search in story string for each
-             *color each
-             *send <color, keyword> pair to componentpane
-            **/
         }
     }
 }

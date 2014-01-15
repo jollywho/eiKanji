@@ -11,12 +11,6 @@ namespace eiKanji
 {
     public partial class ComponentPane : UserControl
     {
-        List<Color> cols = new List<Color>
-            { 
-                Color.Azure, Color.SpringGreen, Color.BlueViolet, Color.CornflowerBlue,
-                Color.Crimson, Color.Orchid, Color.LightPink, Color.Moccasin,
-                Color.Salmon
-            };
 
         public ComponentPane()
         {

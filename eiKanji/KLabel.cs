@@ -26,7 +26,6 @@ namespace eiKanji
             this.cha = dt[1].ToString();
             this.Text = cha;
             this.BackColor = color;
-
         }
 
         public KLabel(IContainer container)
