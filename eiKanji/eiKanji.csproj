@@ -65,6 +65,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="IProc.cs" />
     <Compile Include="KLabel.cs">
       <SubType>Component</SubType>
     </Compile>

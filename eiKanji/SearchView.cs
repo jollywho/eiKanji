@@ -16,6 +16,12 @@ namespace eiKanji
         public SearchView()
         {
             InitializeComponent();
+            IProc.Sv = this;
+        }
+
+        public void SetKey(string key)
+        {
+            txtSearch.Text = key;
         }
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
@@ -31,8 +37,6 @@ namespace eiKanji
                 DataTable dt = DB_Handle.GetDataTable(string.Format(
                     @"SELECT * FROM kanji WHERE {0} = '{1}' LIMIT 10", st, txtSearch.Text));
 
-                // unravel results into search panes
-                // foreach record in dt
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
                     SearchPane sp = new SearchPane();
@@ -40,7 +44,6 @@ namespace eiKanji
                     tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(SizeType.AutoSize, 100));
                     sp.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
                     tableLayoutPanel1.Controls.Add(sp, 0, i + 1);
-                    
                 }
             }
         }

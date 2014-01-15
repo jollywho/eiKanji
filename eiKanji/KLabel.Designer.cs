@@ -32,11 +32,14 @@
             // 
             // KLabel
             // 
-            this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Font = new System.Drawing.Font("Meiryo", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.White;
             this.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.DoubleClick += new System.EventHandler(this.KLabel_DoubleClick);
+            this.MouseEnter += new System.EventHandler(this.KLabel_MouseEnter);
+            this.MouseLeave += new System.EventHandler(this.KLabel_MouseLeave);
             this.ResumeLayout(false);
 
         }
