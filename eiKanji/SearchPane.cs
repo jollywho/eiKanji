@@ -14,6 +14,12 @@ namespace eiKanji
     public partial class SearchPane : UserControl
     {
         ComponentPane cp;
+        List<Color> colors = new List<Color>
+            { 
+                Color.Azure, Color.SpringGreen, Color.BlueViolet, Color.CornflowerBlue,
+                Color.Crimson, Color.Orchid, Color.LightPink, Color.Moccasin,
+                Color.Salmon
+            };
 
         public SearchPane()
         {
@@ -32,8 +38,24 @@ namespace eiKanji
             lblId.Text = dt.Rows[0][0].ToString().PadLeft(4, '0');
             lblKey.Text = dt.Rows[0][2].ToString();
             rtxtStory.Text = dt.Rows[0][3].ToString();
+            
+            dt = DB_Handle.GetDataTable(string.Format(
+                @"SELECT * FROM kanji WHERE id IN
+                ( SELECT pid FROM component WHERE kid ='{0}' ) LIMIT {1}", lblId.Text, colors.Count));
 
-            cp.SetId(lblId.Text);
+            List<KLabel> lst = new List<KLabel>();
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                lst.Add(new KLabel(dt.Rows[i], colors[i]));
+                //search in story, color it
+            }
+            cp.SetComponents(lst);
+
+            /** todo:
+             *search in story string for each
+             *color each
+             *send <color, keyword> pair to componentpane
+            **/
         }
     }
 }

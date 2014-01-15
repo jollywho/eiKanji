@@ -23,34 +23,19 @@ namespace eiKanji
             InitializeComponent();
         }
 
-        public void SetId(string id)
+        public void SetComponents(List<KLabel> lst)
         {
             int row = 0;
             int col = 0;
-            DataTable dt = DB_Handle.GetDataTable(string.Format(
-                @"SELECT char FROM kanji WHERE id IN
-                ( SELECT pid FROM component WHERE kid ='{0}' ) LIMIT {1}", id, cols.Count));
 
-            for (int i = 0; i < dt.Rows.Count; i++, row++)
+            for (int i = 0; i < lst.Count; i++, row++)
             {
                 if (i > 1 && i % 3 == 0)
                 {
                     col++;
                     row = 0;
                 }
-                Label lb = new Label();
-                lb.Text = dt.Rows[i][0].ToString();
-                lb.Anchor = AnchorStyles.Left | AnchorStyles.Top;
-
-                lb.BackColor = cols[i];
-                lb.Font = new Font("Meiryo", this.Font.Size);
-                lb.Dock = DockStyle.Fill;
-                lb.TextAlign = ContentAlignment.MiddleCenter;
-                lb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-
-                //todo: add label event for cell hover/ enter/ branch label into user control
-
-                tableLayoutPanel1.Controls.Add(lb, col, row);
+                tableLayoutPanel1.Controls.Add(lst[i], col, row);
             }
         }
     }
