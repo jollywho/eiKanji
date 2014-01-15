@@ -18,9 +18,15 @@ namespace eiKanji
             this.tableLayoutPanel1.Controls.Add(cp, 4, 1);
         }
 
-        public void SetName(string name)
+        public void SetKey(string key)
         {
-            label1.Text = name;
+            lblKey.Text = key;
+            DataTable dt = DB_Handle.GetDataTable(string.Format(
+                @"SELECT * FROM kanji WHERE keyword='{0}' LIMIT 1", key));
+            lblChar.Text = dt.Rows[0][1].ToString();
+            lblId.Text = dt.Rows[0][0].ToString();
+            lblKey.Text = dt.Rows[0][2].ToString();
+            rtxtStory.Text = dt.Rows[0][3].ToString();
         }
     }
 }

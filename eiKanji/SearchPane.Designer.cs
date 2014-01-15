@@ -28,73 +28,80 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.lblId = new System.Windows.Forms.Label();
+            this.lblKey = new System.Windows.Forms.Label();
+            this.lblChar = new System.Windows.Forms.Label();
+            this.rtxtStory = new System.Windows.Forms.RichTextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // label3
+            // lblId
             // 
-            this.label3.AutoSize = true;
-            this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label3.Location = new System.Drawing.Point(155, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(70, 40);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "label3";
+            this.lblId.AutoSize = true;
+            this.lblId.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblId.Font = new System.Drawing.Font("Meiryo", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblId.Location = new System.Drawing.Point(155, 0);
+            this.lblId.Name = "lblId";
+            this.lblId.Size = new System.Drawing.Size(70, 25);
+            this.lblId.TabIndex = 7;
+            this.lblId.Text = "label3";
+            this.lblId.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label2
+            // lblKey
             // 
-            this.label2.AutoSize = true;
-            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.Location = new System.Drawing.Point(79, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(70, 40);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "label2";
+            this.lblKey.AutoSize = true;
+            this.lblKey.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblKey.Font = new System.Drawing.Font("Meiryo", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblKey.Location = new System.Drawing.Point(79, 0);
+            this.lblKey.Name = "lblKey";
+            this.lblKey.Size = new System.Drawing.Size(70, 25);
+            this.lblKey.TabIndex = 6;
+            this.lblKey.Text = "label2";
+            this.lblKey.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label1
+            // lblChar
             // 
-            this.label1.AutoSize = true;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Location = new System.Drawing.Point(3, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(70, 40);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "label1";
+            this.lblChar.AutoSize = true;
+            this.lblChar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblChar.Font = new System.Drawing.Font("Meiryo", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblChar.Location = new System.Drawing.Point(3, 0);
+            this.lblChar.Name = "lblChar";
+            this.lblChar.Size = new System.Drawing.Size(70, 25);
+            this.lblChar.TabIndex = 5;
+            this.lblChar.Text = "label1";
+            this.lblChar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // richTextBox1
+            // rtxtStory
             // 
-            this.richTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.rtxtStory.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel1.SetColumnSpan(this.richTextBox1, 3);
-            this.richTextBox1.Location = new System.Drawing.Point(3, 43);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(222, 84);
-            this.richTextBox1.TabIndex = 4;
-            this.richTextBox1.Text = "";
+            this.tableLayoutPanel1.SetColumnSpan(this.rtxtStory, 3);
+            this.rtxtStory.Font = new System.Drawing.Font("Meiryo", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rtxtStory.Location = new System.Drawing.Point(3, 28);
+            this.rtxtStory.Name = "rtxtStory";
+            this.rtxtStory.Size = new System.Drawing.Size(222, 84);
+            this.rtxtStory.TabIndex = 4;
+            this.rtxtStory.Text = "";
             // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.AutoScroll = true;
             this.tableLayoutPanel1.ColumnCount = 4;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33332F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.label2, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.label3, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.richTextBox1, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.lblChar, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.lblKey, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.lblId, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.rtxtStory, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.MaximumSize = new System.Drawing.Size(500, 200);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(230, 130);
             this.tableLayoutPanel1.TabIndex = 8;
@@ -114,10 +121,10 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.Label lblId;
+        private System.Windows.Forms.Label lblKey;
+        private System.Windows.Forms.Label lblChar;
+        private System.Windows.Forms.RichTextBox rtxtStory;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     }
 }

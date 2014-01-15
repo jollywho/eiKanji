@@ -36,7 +36,7 @@ namespace eiKanji
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
                     spl[i] = new SearchPane();
-                    spl[i].SetName("ha" + i.ToString());
+                    spl[i].SetKey(txtSearch.Text);
                     spl[i].Dock = DockStyle.Fill;
                     tableLayoutPanel1.Controls.Add(spl[i], 0, i + 1);
                     tableLayoutPanel1.RowStyles[i + 1].SizeType = SizeType.Absolute;

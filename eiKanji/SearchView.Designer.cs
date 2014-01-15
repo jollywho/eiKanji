@@ -53,9 +53,10 @@
             // txtSearch
             // 
             this.txtSearch.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.txtSearch.Location = new System.Drawing.Point(176, 9);
+            this.txtSearch.Font = new System.Drawing.Font("Meiryo", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearch.Location = new System.Drawing.Point(176, 5);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(147, 20);
+            this.txtSearch.Size = new System.Drawing.Size(147, 27);
             this.txtSearch.TabIndex = 0;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
