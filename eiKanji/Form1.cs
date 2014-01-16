@@ -13,11 +13,13 @@ namespace eiKanji
 {
     public partial class Form1 : Form
     {
+        public static Form form;
         EditView ev;
         SearchView sv;
 
         public Form1()
         {
+            form = this;
             InitializeComponent();
             ev = new EditView();
             sv = new SearchView();
@@ -44,6 +46,10 @@ namespace eiKanji
                 this.Controls.Remove(ev);
                 this.Controls.Add(sv);
                 sv.Focus();
+            }
+            if (e.Modifiers == Keys.Control && e.KeyCode == Keys.Enter)
+            {
+                ev.Save();
             }
         }
 

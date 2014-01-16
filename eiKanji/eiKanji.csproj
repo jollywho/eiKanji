@@ -52,6 +52,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BetterDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BetterDialog.Designer.cs">
+      <DependentUpon>BetterDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="ComponentPane.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -92,6 +98,9 @@
     <Compile Include="SearchView.Designer.cs">
       <DependentUpon>SearchView.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="BetterDialog.resx">
+      <DependentUpon>BetterDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ComponentPane.resx">
       <DependentUpon>ComponentPane.cs</DependentUpon>
     </EmbeddedResource>

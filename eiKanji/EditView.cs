@@ -33,6 +33,36 @@ namespace eiKanji
         //todo: validate + commit
         // validate: all component keywords used in story.
 
+        public void Save()
+        {
+            if (ValidateForm())
+            {
+                DialogResult dlg = BetterDialog.ShowDialog("Save", "Are you sure you want to save?",
+                    txtChar.Text, "Yes", "No",
+                    null, BetterDialog.ImageStyle.Image);
+
+                if (dlg == DialogResult.OK)
+                {
+                    //
+                }
+            }
+        }
+
+        private bool ValidateForm()
+        {
+            bool err = true;
+            if (!Txt_Validate(txtID))
+                err = false;
+            if (!Txt_Validate(txtChar))
+                err = false;
+            if (!Txt_Validate(txtKey))
+                err = false;
+            //note
+            if (!Keyword_Validate())
+                err = false;
+            return err;
+        }
+
         private void Lookup()
         {
             if (gvComp.CurrentCell.Value == null)
@@ -57,52 +87,56 @@ namespace eiKanji
             }
         }
 
-        private void gvComp_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
-            {
-                gvComp.Rows[e.RowIndex].Cells[e.ColumnIndex].ErrorText = "";
-                gvComp.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.SelectionBackColor = Color.Aqua;
-                gvComp.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor = Color.Aqua;
-            }
-        }
-
-        private void gvComp_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
-            {
-                gvComp.Rows[e.RowIndex].Cells[e.ColumnIndex].ErrorText = "";
-                gvComp.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.SelectionBackColor = Color.RoyalBlue;
-                gvComp.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor = Color.White;
-            }
-        }
-
         private void gvComp_CellEnter(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
             {
                 gvComp.Rows[e.RowIndex].Cells[e.ColumnIndex].ErrorText = "";
-                gvComp.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.SelectionBackColor = Color.Aqua;
-                gvComp.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor = Color.Aqua;
-            }
-        }
-
-        private void gvComp_CellLeave(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
-            {
-                gvComp.Rows[e.RowIndex].Cells[e.ColumnIndex].ErrorText = "";
-                gvComp.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.SelectionBackColor = Color.RoyalBlue;
+                gvComp.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.SelectionBackColor = Color.FromArgb(192, 255, 255);
                 gvComp.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor = Color.White;
             }
         }
 
-        private void gvComp_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void gvComp_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
-            string col = gvComp.Columns[gvComp.CurrentCell.ColumnIndex].HeaderText;
-            string val = gvComp.CurrentCell.Value.ToString();
-            DataTable dt = DB_Handle.GetDataTable(string.Format(@"SELECT id FROM kanji WHERE {0}='{1}'", col, val));
-            rtxtStory.Text += " {" + gvComp.Rows[e.RowIndex].Cells[0].Value.ToString().PadLeft(4, '0') + "} ";
+            gvComp.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.SelectionBackColor = Color.Azure;
+            gvComp.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor = Color.White;
+        }
+
+        private bool Txt_Validate(object sender)
+        {
+            TextBox txt = (TextBox)sender;
+            if (txt.Text.Length < 1)
+            {
+                epVal.SetError(txt, "-required");
+                return false;
+            }
+            return true;
+        }
+
+        private bool Keyword_Validate()
+        {
+            List<string> lst = new List<string>();
+
+            if (gvComp.Rows.Count < 2)
+                return false;
+
+            for (int i = 0; i < gvComp.Rows.Count - 2; i++)
+            {
+                for (int j = 0; j < gvComp.Columns.Count - 1; j++)
+                {
+                    if (gvComp.Rows[i].Cells[j].Value == null)
+                        return false;
+                    lst.Add(gvComp.Rows[i].Cells[j].Value.ToString());
+                }
+            }
+
+            foreach (string str in lst)
+            {
+                if (rtxtStory.Find(str, 0) < 0)
+                    return false;
+            }
+            return true;
         }
     }
 }

@@ -12,3 +12,5 @@ C:\Users\Jollyrancher\Documents\Code\Visual Studio 2010\eiKanji\eiKanji\obj\Rele
 C:\Users\Jollyrancher\Documents\Code\Visual Studio 2010\eiKanji\eiKanji\obj\Release\eiKanji.SearchPane.resources
 C:\Users\Jollyrancher\Documents\Code\Visual Studio 2010\eiKanji\eiKanji\obj\Release\eiKanji.ComponentPane.resources
 C:\Users\Jollyrancher\Documents\Code\Visual Studio 2010\eiKanji\eiKanji\obj\Release\eiKanji.KLabel.resources
+C:\Users\Jollyrancher\Documents\Code\Visual Studio 2010\eiKanji\eiKanji\obj\Release\eiKanji.csprojResolveAssemblyReference.cache
+C:\Users\Jollyrancher\Documents\Code\Visual Studio 2010\eiKanji\eiKanji\obj\Release\eiKanji.BetterDialog.resources

@@ -28,7 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gvComp = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -44,8 +46,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.rtxtStory = new System.Windows.Forms.RichTextBox();
+            this.epVal = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.gvComp)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.epVal)).BeginInit();
             this.SuspendLayout();
             // 
             // gvComp
@@ -61,10 +65,10 @@
             this.Column2});
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Meiryo", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Meiryo", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Azure;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.gvComp.DefaultCellStyle = dataGridViewCellStyle1;
             this.gvComp.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -72,6 +76,14 @@
             this.gvComp.Location = new System.Drawing.Point(223, 3);
             this.gvComp.MultiSelect = false;
             this.gvComp.Name = "gvComp";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gvComp.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.gvComp.RowHeadersVisible = false;
             this.tableLayoutPanel1.SetRowSpan(this.gvComp, 6);
             this.gvComp.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -81,11 +93,8 @@
             this.gvComp.Size = new System.Drawing.Size(274, 294);
             this.gvComp.StandardTab = true;
             this.gvComp.TabIndex = 4;
-            this.gvComp.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvComp_CellDoubleClick);
             this.gvComp.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvComp_CellEnter);
-            this.gvComp.CellLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvComp_CellLeave);
-            this.gvComp.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvComp_CellMouseEnter);
-            this.gvComp.CellMouseLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvComp_CellMouseLeave);
+            this.gvComp.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.gvComp_CellValidating);
             this.gvComp.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gvComp_KeyDown);
             // 
             // Column1
@@ -115,25 +124,28 @@
             // txtID
             // 
             this.txtID.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.txtID.Font = new System.Drawing.Font("Meiryo", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtID.Location = new System.Drawing.Point(89, 3);
             this.txtID.Name = "txtID";
-            this.txtID.Size = new System.Drawing.Size(122, 20);
+            this.txtID.Size = new System.Drawing.Size(122, 31);
             this.txtID.TabIndex = 0;
             // 
             // txtKey
             // 
             this.txtKey.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.txtKey.Font = new System.Drawing.Font("Meiryo", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtKey.Location = new System.Drawing.Point(89, 23);
             this.txtKey.Name = "txtKey";
-            this.txtKey.Size = new System.Drawing.Size(122, 20);
+            this.txtKey.Size = new System.Drawing.Size(122, 31);
             this.txtKey.TabIndex = 1;
             // 
             // txtChar
             // 
             this.txtChar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.txtChar.Font = new System.Drawing.Font("Meiryo", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtChar.Location = new System.Drawing.Point(89, 43);
             this.txtChar.Name = "txtChar";
-            this.txtChar.Size = new System.Drawing.Size(122, 20);
+            this.txtChar.Size = new System.Drawing.Size(122, 31);
             this.txtChar.TabIndex = 2;
             // 
             // label1
@@ -163,9 +175,10 @@
             // txtNote
             // 
             this.txtNote.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.txtNote.Font = new System.Drawing.Font("Meiryo", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNote.Location = new System.Drawing.Point(89, 63);
             this.txtNote.Name = "txtNote";
-            this.txtNote.Size = new System.Drawing.Size(122, 20);
+            this.txtNote.Size = new System.Drawing.Size(122, 31);
             this.txtNote.TabIndex = 3;
             // 
             // label5
@@ -238,12 +251,17 @@
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.rtxtStory, 2);
             this.rtxtStory.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rtxtStory.Font = new System.Drawing.Font("Meiryo", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rtxtStory.Font = new System.Drawing.Font("Meiryo", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rtxtStory.Location = new System.Drawing.Point(3, 103);
             this.rtxtStory.Name = "rtxtStory";
             this.rtxtStory.Size = new System.Drawing.Size(214, 194);
             this.rtxtStory.TabIndex = 14;
             this.rtxtStory.Text = "";
+            // 
+            // epVal
+            // 
+            this.epVal.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.epVal.ContainerControl = this;
             // 
             // EditView
             // 
@@ -256,6 +274,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gvComp)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.epVal)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -277,5 +296,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.ErrorProvider epVal;
     }
 }
