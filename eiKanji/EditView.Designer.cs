@@ -32,9 +32,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gvComp = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtID = new System.Windows.Forms.TextBox();
             this.txtChar = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -47,6 +44,9 @@
             this.epVal = new System.Windows.Forms.ErrorProvider(this.components);
             this.label2 = new System.Windows.Forms.Label();
             this.txtKey = new System.Windows.Forms.TextBox();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gvComp)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.epVal)).BeginInit();
@@ -60,9 +60,9 @@
             this.gvComp.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
             this.gvComp.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gvComp.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
+            this.Column2,
             this.Column3,
-            this.Column2});
+            this.Column1});
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Meiryo", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -97,30 +97,6 @@
             this.gvComp.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.gvComp_CellValidating);
             this.gvComp.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gvComp_KeyDown);
             // 
-            // Column1
-            // 
-            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column1.FillWeight = 36.02257F;
-            this.Column1.HeaderText = "ID";
-            this.Column1.Name = "Column1";
-            this.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Column3
-            // 
-            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column3.FillWeight = 27.99287F;
-            this.Column3.HeaderText = "Char";
-            this.Column3.Name = "Column3";
-            this.Column3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Column2
-            // 
-            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column2.FillWeight = 77.9135F;
-            this.Column2.HeaderText = "Keyword";
-            this.Column2.Name = "Column2";
-            this.Column2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
             // txtID
             // 
             this.txtID.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
@@ -137,7 +113,7 @@
             this.txtChar.Location = new System.Drawing.Point(89, 33);
             this.txtChar.Name = "txtChar";
             this.txtChar.Size = new System.Drawing.Size(122, 27);
-            this.txtChar.TabIndex = 2;
+            this.txtChar.TabIndex = 1;
             // 
             // label1
             // 
@@ -234,7 +210,7 @@
             this.rtxtStory.Location = new System.Drawing.Point(3, 143);
             this.rtxtStory.Name = "rtxtStory";
             this.rtxtStory.Size = new System.Drawing.Size(214, 154);
-            this.rtxtStory.TabIndex = 14;
+            this.rtxtStory.TabIndex = 5;
             this.rtxtStory.Text = "";
             // 
             // epVal
@@ -261,7 +237,31 @@
             this.txtKey.Location = new System.Drawing.Point(89, 63);
             this.txtKey.Name = "txtKey";
             this.txtKey.Size = new System.Drawing.Size(122, 27);
-            this.txtKey.TabIndex = 15;
+            this.txtKey.TabIndex = 2;
+            // 
+            // Column2
+            // 
+            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column2.FillWeight = 77.9135F;
+            this.Column2.HeaderText = "Keyword";
+            this.Column2.Name = "Column2";
+            this.Column2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Column3
+            // 
+            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column3.FillWeight = 27.99287F;
+            this.Column3.HeaderText = "Char";
+            this.Column3.Name = "Column3";
+            this.Column3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Column1
+            // 
+            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column1.FillWeight = 36.02257F;
+            this.Column1.HeaderText = "ID";
+            this.Column1.Name = "Column1";
+            this.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // EditView
             // 
@@ -291,11 +291,11 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtNote;
         private System.Windows.Forms.RichTextBox rtxtStory;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.ErrorProvider epVal;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtKey;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
     }
 }

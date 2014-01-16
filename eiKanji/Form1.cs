@@ -24,8 +24,6 @@ namespace eiKanji
             ev = new EditView();
             sv = new SearchView();
             this.Controls.Add(ev);
-            ev.Dock = DockStyle.Fill;
-            sv.Dock = DockStyle.Fill;
         }
 
         /// <summary>
@@ -47,9 +45,15 @@ namespace eiKanji
                 this.Controls.Add(sv);
                 sv.Focus();
             }
-            if (e.Modifiers == Keys.Control && e.KeyCode == Keys.Enter)
+            if (e.Modifiers == Keys.Control && e.KeyCode == Keys.S)
             {
-                ev.Save();
+                if (ev.Save())
+                {
+                    this.Controls.Remove(ev);
+                    ev = new EditView();
+                    this.Controls.Add(ev);
+                    ev.Focus();
+                }
             }
         }
 

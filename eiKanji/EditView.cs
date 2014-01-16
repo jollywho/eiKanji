@@ -15,6 +15,7 @@ namespace eiKanji
         {
             InitializeComponent();
             gvComp.Rows.Add("", "", "");
+            this.Dock = DockStyle.Fill;
         }
 
         private void gvComp_KeyDown(object sender, KeyEventArgs e)
@@ -30,7 +31,7 @@ namespace eiKanji
                 Lookup();
         }
 
-        public void Save()
+        public bool Save()
         {
             if (ValidateForm())
             {
@@ -49,9 +50,9 @@ namespace eiKanji
                         {
                             DB_Handle.UpdateTable(string.Format(
                                 "INSERT OR REPLACE INTO component VALUES ({0}, {1})",
-                                txtID, gvComp.Rows[i].Cells[0].ToString()));
+                                txtID.Text, gvComp.Rows[i].Cells[2].Value.ToString()));
                         }
-                        //refresh
+                        return true;
                     }
                 }
                 catch (Exception ex)
@@ -59,6 +60,7 @@ namespace eiKanji
                     MessageBox.Show(ex.Message + " " + ex.InnerException.Message);
                 }
             }
+            return false;
         }
 
         private bool ValidateForm()
@@ -87,9 +89,9 @@ namespace eiKanji
 
             if (dt.Rows.Count > 0)
             {
-                gvComp.SelectedRows[0].Cells[0].Value = dt.Rows[0][0];
+                gvComp.SelectedRows[0].Cells[2].Value = dt.Rows[0][0];
                 gvComp.SelectedRows[0].Cells[1].Value = dt.Rows[0][1];
-                gvComp.SelectedRows[0].Cells[2].Value = dt.Rows[0][2];
+                gvComp.SelectedRows[0].Cells[0].Value = dt.Rows[0][2];
                 gvComp.CurrentCell.ErrorText = "";
                 gvComp.Rows.Add("", "", "");
                 gvComp.CurrentCell = gvComp.Rows[gvComp.Rows.Count - 1].Cells[gvComp.CurrentCell.ColumnIndex];
@@ -137,8 +139,8 @@ namespace eiKanji
                 {
                     if (gvComp.Rows[i].Cells[j].Value == null)
                         return false;
-                    lst.Add(gvComp.Rows[i].Cells[j].Value.ToString());
                 }
+                lst.Add(gvComp.Rows[i].Cells[0].Value.ToString());
             }
 
             foreach (string str in lst)

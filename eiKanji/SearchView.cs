@@ -17,6 +17,7 @@ namespace eiKanji
         {
             InitializeComponent();
             IProc.Sv = this;
+            this.Dock = DockStyle.Fill;
         }
 
         public void SetKey(string key)
