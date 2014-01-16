@@ -30,7 +30,6 @@ namespace eiKanji
 
         public void SetKey(string key)
         {
-            string story;
             lblKey.Text = key;
             DataTable dt = DB_Handle.GetDataTable(string.Format(
                 @"SELECT * FROM kanji WHERE keyword='{0}' LIMIT 1", key));
@@ -43,20 +42,30 @@ namespace eiKanji
                 @"SELECT * FROM kanji WHERE id IN
                 ( SELECT pid FROM component WHERE kid ='{0}' ) LIMIT {1}", lblId.Text, colors.Count));
 
-            List<KLabel> lst = new List<KLabel>();
-            for (int i = 0; i < dt.Rows.Count; i++)
+            if (dt.Rows.Count > 0)
             {
-                lst.Add(new KLabel(dt.Rows[i], colors[i]));
-                int pos = rtxtStory.Find(dt.Rows[i][2].ToString());
-                if (pos > 0)
+                int pos;
+                List<KLabel> lst = new List<KLabel>();
+                for (int i = 0; i < dt.Rows.Count; i++)
                 {
-                    rtxtStory.Select(pos, dt.Rows[i][2].ToString().Length);
-                    rtxtStory.SelectionBackColor = colors[i];
-                    rtxtStory.SelectionColor = Color.White;
-                    rtxtStory.SelectionFont = new Font(this.Font, FontStyle.Bold);
+                    lst.Add(new KLabel(dt.Rows[i], colors[i]));
+                    pos = rtxtStory.Find(dt.Rows[i][2].ToString());
+                    if (pos >= 0)
+                    {
+                        rtxtStory.Select(pos, dt.Rows[i][2].ToString().Length);
+                        rtxtStory.SelectionBackColor = colors[i];
+                        rtxtStory.SelectionColor = Color.White;
+                        rtxtStory.SelectionFont = new Font(this.Font, FontStyle.Bold);
+                    }
                 }
+                pos = rtxtStory.Find(lblKey.Text, RichTextBoxFinds.WholeWord);
+                if (pos >= 0)
+                {
+                    rtxtStory.Select(pos, lblKey.Text.Length);
+                    rtxtStory.SelectionFont = new Font(this.Font, FontStyle.Underline);
+                }
+                cp.SetComponents(lst);
             }
-            cp.SetComponents(lst);
         }
     }
 }
