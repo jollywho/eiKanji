@@ -30,20 +30,33 @@ namespace eiKanji
                 Lookup();
         }
 
-        //todo: validate + commit
-        // validate: all component keywords used in story.
-
         public void Save()
         {
             if (ValidateForm())
             {
-                DialogResult dlg = BetterDialog.ShowDialog("Save", "Are you sure you want to save?",
-                    txtChar.Text, "Yes", "No",
-                    null, BetterDialog.ImageStyle.Image);
-
-                if (dlg == DialogResult.OK)
+                try
                 {
-                    //
+                    DialogResult dlg = BetterDialog.ShowDialog("Save", "Are you sure you want to save?",
+                        txtChar.Text, "Yes", "No",
+                        null, BetterDialog.ImageStyle.Image);
+
+                    if (dlg == DialogResult.OK)
+                    {
+                        DB_Handle.UpdateTable(string.Format(
+                            "INSERT OR REPLACE INTO kanji VALUES ({0}, '{1}', '{2}', '{3}')",
+                            txtID.Text, txtChar.Text, txtKey.Text, rtxtStory.Text));
+                        for (int i = 0; i < gvComp.Rows.Count - 1; i++)
+                        {
+                            DB_Handle.UpdateTable(string.Format(
+                                "INSERT OR REPLACE INTO component VALUES ({0}, {1})",
+                                txtID, gvComp.Rows[i].Cells[0].ToString()));
+                        }
+                        //refresh
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message + " " + ex.InnerException.Message);
                 }
             }
         }
@@ -117,9 +130,6 @@ namespace eiKanji
         private bool Keyword_Validate()
         {
             List<string> lst = new List<string>();
-
-            if (gvComp.Rows.Count < 2)
-                return false;
 
             for (int i = 0; i < gvComp.Rows.Count - 2; i++)
             {
