@@ -12,6 +12,7 @@ namespace eiKanji
     public partial class SearchView : UserControl
     {
         List<string> cols = new List<string> { "id", "char", "keyword" };
+        string keyid;
 
         public SearchView()
         {
@@ -23,6 +24,11 @@ namespace eiKanji
         public void SetKey(string key)
         {
             txtSearch.Text = key;
+        }
+
+        public string GetKey()
+        {
+            return keyid;
         }
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
@@ -41,7 +47,8 @@ namespace eiKanji
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
                     SearchPane sp = new SearchPane();
-                    sp.SetKey(dt.Rows[0][2].ToString());
+                    keyid = dt.Rows[0][2].ToString();
+                    sp.SetKey(keyid);
                     tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(SizeType.AutoSize, 100));
                     sp.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
                     tableLayoutPanel1.Controls.Add(sp, 0, i + 1);

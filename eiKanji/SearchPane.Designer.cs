@@ -80,7 +80,7 @@
             // 
             // rtxtStory
             // 
-            this.rtxtStory.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.rtxtStory.BackColor = System.Drawing.Color.AliceBlue;
             this.rtxtStory.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tableLayoutPanel1.SetColumnSpan(this.rtxtStory, 3);
             this.rtxtStory.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -88,11 +88,11 @@
             this.rtxtStory.Location = new System.Drawing.Point(4, 43);
             this.rtxtStory.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.rtxtStory.Name = "rtxtStory";
-            this.rtxtStory.ReadOnly = true;
             this.rtxtStory.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
             this.rtxtStory.Size = new System.Drawing.Size(190, 152);
             this.rtxtStory.TabIndex = 4;
             this.rtxtStory.Text = "";
+            this.rtxtStory.KeyDown += new System.Windows.Forms.KeyEventHandler(this.rtxtStory_KeyDown);
             // 
             // tableLayoutPanel1
             // 
@@ -123,6 +123,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.tableLayoutPanel1);
+            this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Meiryo", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "SearchPane";

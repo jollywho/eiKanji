@@ -16,6 +16,7 @@ namespace eiKanji
         public static Form form;
         EditView ev;
         SearchView sv;
+        bool edit;
 
         public Form1()
         {
@@ -24,6 +25,7 @@ namespace eiKanji
             ev = new EditView();
             sv = new SearchView();
             this.Controls.Add(ev);
+            edit = true;
         }
 
         /// <summary>
@@ -33,29 +35,43 @@ namespace eiKanji
         /// <param name="e"></param>
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Modifiers == Keys.Control && e.KeyCode == Keys.D1)
+            if (!edit && e.Modifiers == Keys.Control && e.KeyCode == Keys.D1)
             {
-                this.Controls.Remove(sv);
-                this.Controls.Add(ev);
-                ev.Focus();
+                Swap_View(sv, ev);
             }
-            if (e.Modifiers == Keys.Control && e.KeyCode == Keys.D2)
+            if (edit && e.Modifiers == Keys.Control && e.KeyCode == Keys.D2)
             {
-                this.Controls.Remove(ev);
-                this.Controls.Add(sv);
-                sv.Focus();
+                Swap_View(ev, sv);
             }
             if (e.Modifiers == Keys.Control && e.KeyCode == Keys.S)
             {
-                if (ev.Save())
+                if (edit)
                 {
-                    this.Controls.Remove(ev);
-                    ev = new EditView();
-                    this.Controls.Add(ev);
-                    ev.Focus();
+                    if (ev.Save())
+                    {
+                        this.Controls.Remove(ev);
+                        ev = new EditView();
+                        this.Controls.Add(ev);
+                        ev.Focus();
+                    }
+                }
+            }
+            if (!edit && e.Modifiers == Keys.Control && e.KeyCode == Keys.E)
+            {
+                if (sv.GetKey().Length > 0)
+                {
+                    Swap_View(sv, ev);
+                    ev.Search(sv.GetKey());
                 }
             }
         }
 
+        private void Swap_View(UserControl uc1, UserControl uc2)
+        {
+            edit = !edit;
+            this.Controls.Remove(uc1);
+            this.Controls.Add(uc2);
+            uc2.Focus();
+        }
     }
 }

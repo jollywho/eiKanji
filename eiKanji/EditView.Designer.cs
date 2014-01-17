@@ -32,6 +32,9 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gvComp = new System.Windows.Forms.DataGridView();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtID = new System.Windows.Forms.TextBox();
             this.txtChar = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -40,13 +43,10 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.rtxtStory = new System.Windows.Forms.RichTextBox();
-            this.epVal = new System.Windows.Forms.ErrorProvider(this.components);
             this.label2 = new System.Windows.Forms.Label();
             this.txtKey = new System.Windows.Forms.TextBox();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rtxtStory = new System.Windows.Forms.RichTextBox();
+            this.epVal = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.gvComp)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.epVal)).BeginInit();
@@ -56,6 +56,7 @@
             // 
             this.gvComp.AllowUserToAddRows = false;
             this.gvComp.AllowUserToDeleteRows = false;
+            this.gvComp.AllowUserToResizeRows = false;
             this.gvComp.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.gvComp.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
             this.gvComp.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -85,6 +86,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.gvComp.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.gvComp.RowHeadersVisible = false;
+            this.gvComp.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.tableLayoutPanel1.SetRowSpan(this.gvComp, 6);
             this.gvComp.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.gvComp.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -96,6 +98,30 @@
             this.gvComp.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvComp_CellEnter);
             this.gvComp.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.gvComp_CellValidating);
             this.gvComp.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gvComp_KeyDown);
+            // 
+            // Column2
+            // 
+            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column2.FillWeight = 77.9135F;
+            this.Column2.HeaderText = "Keyword";
+            this.Column2.Name = "Column2";
+            this.Column2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Column3
+            // 
+            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column3.FillWeight = 27.99287F;
+            this.Column3.HeaderText = "Char";
+            this.Column3.Name = "Column3";
+            this.Column3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Column1
+            // 
+            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column1.FillWeight = 36.02257F;
+            this.Column1.HeaderText = "ID";
+            this.Column1.Name = "Column1";
+            this.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // txtID
             // 
@@ -202,22 +228,6 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(500, 300);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
-            // rtxtStory
-            // 
-            this.tableLayoutPanel1.SetColumnSpan(this.rtxtStory, 2);
-            this.rtxtStory.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rtxtStory.Font = new System.Drawing.Font("Meiryo", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rtxtStory.Location = new System.Drawing.Point(3, 143);
-            this.rtxtStory.Name = "rtxtStory";
-            this.rtxtStory.Size = new System.Drawing.Size(214, 154);
-            this.rtxtStory.TabIndex = 5;
-            this.rtxtStory.Text = "";
-            // 
-            // epVal
-            // 
-            this.epVal.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
-            this.epVal.ContainerControl = this;
-            // 
             // label2
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
@@ -239,29 +249,22 @@
             this.txtKey.Size = new System.Drawing.Size(122, 27);
             this.txtKey.TabIndex = 2;
             // 
-            // Column2
+            // rtxtStory
             // 
-            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column2.FillWeight = 77.9135F;
-            this.Column2.HeaderText = "Keyword";
-            this.Column2.Name = "Column2";
-            this.Column2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.rtxtStory.BackColor = System.Drawing.Color.AliceBlue;
+            this.tableLayoutPanel1.SetColumnSpan(this.rtxtStory, 2);
+            this.rtxtStory.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rtxtStory.Font = new System.Drawing.Font("Meiryo", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rtxtStory.Location = new System.Drawing.Point(3, 143);
+            this.rtxtStory.Name = "rtxtStory";
+            this.rtxtStory.Size = new System.Drawing.Size(214, 154);
+            this.rtxtStory.TabIndex = 5;
+            this.rtxtStory.Text = "";
             // 
-            // Column3
+            // epVal
             // 
-            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column3.FillWeight = 27.99287F;
-            this.Column3.HeaderText = "Char";
-            this.Column3.Name = "Column3";
-            this.Column3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Column1
-            // 
-            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column1.FillWeight = 36.02257F;
-            this.Column1.HeaderText = "ID";
-            this.Column1.Name = "Column1";
-            this.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.epVal.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.epVal.ContainerControl = this;
             // 
             // EditView
             // 

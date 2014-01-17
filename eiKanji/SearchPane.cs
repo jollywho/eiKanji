@@ -67,5 +67,11 @@ namespace eiKanji
                 cp.SetComponents(lst);
             }
         }
+
+        private void rtxtStory_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Modifiers == Keys.Control && e.KeyCode == Keys.E)
+                e.Handled = true;
+        }
     }
 }

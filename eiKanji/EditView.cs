@@ -28,7 +28,31 @@ namespace eiKanji
                 }
             }
             else if (e.KeyCode == Keys.Enter)
-                Lookup();
+                Lookup(gvComp.Columns[gvComp.CurrentCell.ColumnIndex].HeaderText, 
+                    gvComp.CurrentCell.Value.ToString());
+        }
+
+        public void Search(string key)
+        {
+            DataTable dt = DB_Handle.GetDataTable(
+                string.Format(@"SELECT * FROM kanji WHERE keyword = '{0}'", key));
+
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                txtID.Text = dt.Rows[i][0].ToString();
+                txtChar.Text = dt.Rows[i][1].ToString();
+                txtKey.Text = dt.Rows[i][2].ToString();
+                rtxtStory.Text = dt.Rows[i][3].ToString();
+            }
+
+            dt = DB_Handle.GetDataTable(string.Format(
+                @"SELECT * FROM kanji WHERE id IN
+                ( SELECT pid FROM component WHERE kid ='{0}' ) LIMIT 9", txtID.Text));
+
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                Lookup("id", dt.Rows[i][0].ToString());
+            }
         }
 
         public bool Save()
@@ -78,14 +102,9 @@ namespace eiKanji
             return err;
         }
 
-        private void Lookup()
+        private void Lookup(string field, string key)
         {
-            if (gvComp.CurrentCell.Value == null)
-                return;
-
-            string col = gvComp.Columns[gvComp.CurrentCell.ColumnIndex].HeaderText;
-            string val = gvComp.CurrentCell.Value.ToString();
-            DataTable dt = DB_Handle.GetDataTable(string.Format(@"SELECT * FROM kanji WHERE {0}='{1}'", col, val));
+            DataTable dt = DB_Handle.GetDataTable(string.Format(@"SELECT * FROM kanji WHERE {0}='{1}'", field, key));
 
             if (dt.Rows.Count > 0)
             {
