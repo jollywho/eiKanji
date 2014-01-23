@@ -60,6 +60,7 @@ namespace eiKanji
             {
                 if (sv.GetKey().Length > 0)
                 {
+                    ev = new EditView();
                     Swap_View(sv, ev);
                     ev.Search(sv.GetKey());
                 }
