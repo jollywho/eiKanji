@@ -12,7 +12,7 @@ namespace eiKanji
     public partial class SearchView : UserControl
     {
         List<string> cols = new List<string> { "id", "char", "keyword" };
-        string keyid;
+        string keyid = string.Empty;
 
         public SearchView()
         {
