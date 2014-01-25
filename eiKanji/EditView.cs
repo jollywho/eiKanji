@@ -70,6 +70,8 @@ namespace eiKanji
                         DB_Handle.UpdateTable(string.Format(
                             "INSERT OR REPLACE INTO kanji VALUES ({0}, '{1}', '{2}', '{3}')",
                             txtID.Text, txtChar.Text, txtKey.Text, rtxtStory.Text));
+
+                        //todo: delete old records if removed from gridview
                         for (int i = 0; i < gvComp.Rows.Count - 1; i++)
                         {
                             DB_Handle.UpdateTable(string.Format(
@@ -89,17 +91,14 @@ namespace eiKanji
 
         private bool ValidateForm()
         {
-            bool err = true;
-            if (!Txt_Validate(txtID))
-                err = false;
-            if (!Txt_Validate(txtChar))
-                err = false;
-            if (!Txt_Validate(txtKey))
-                err = false;
+            string err = "";
+            err += Txt_Validate(txtID);
+            err += Txt_Validate(txtChar);
+            err += Txt_Validate(txtKey);
             //note
-            if (!Keyword_Validate())
-                err = false;
-            return err;
+            err += Keyword_Validate();
+            err += Comp_Validate();
+            return err.Length < 1 ? true : false;
         }
 
         private void Lookup(string field, string key)
@@ -137,27 +136,75 @@ namespace eiKanji
             gvComp.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor = Color.White;
         }
 
-        private bool Txt_Validate(object sender)
+        private string Txt_Validate(object sender)
         {
+            string err = "";
             TextBox txt = (TextBox)sender;
             if (txt.Text.Length < 1)
             {
                 epVal.SetError(txt, "-required");
-                return false;
+                err = "Error";
             }
-            return true;
+            return err;
         }
 
-        private bool Keyword_Validate()
+        private string Comp_Validate()
         {
+            string err = "";
+            List<string> lst = new List<string>();
+            List<string> lstx = new List<string>();
+            for (int i = 0; i < gvComp.Rows.Count - 1; i++)
+            {
+                lst.Add(gvComp.Rows[i].Cells[2].Value.ToString());
+            }
+            
+            for (int i = 0; i < lst.Count; i++)
+            {       
+                DataTable dt = DB_Handle.GetDataTable(
+                    string.Format(@"SELECT kid FROM component WHERE pid='{0}'",
+                    lst[i]));
+
+                if (dt.Rows.Count > -1)
+                {
+                    DataTable dx = DB_Handle.GetDataTable(
+                        string.Format(@"SELECT pid FROM component WHERE kid='{0}'",
+                        dt.Rows[0][0]));
+                    
+                    for (int j = 0; j < dx.Rows.Count; j++)
+                    {
+                        if (dt.Rows[0][0].ToString() != txtID.Text)
+                        {
+                            lstx.Add(dx.Rows[j][0].ToString());
+                        }
+                    }
+                    err = CheckList(lst, lstx);
+                }
+            }
+            return err;
+        }
+
+        private string CheckList(List<string> lst_checkfor, List<string> lst)
+        {
+            string err = "";
+            foreach (string item in lst_checkfor)
+            {
+                if (!lst.Contains(item))
+                    err = "Error";
+            }
+            return err;
+        }
+
+        private string Keyword_Validate()
+        {
+            string err = "";
             List<string> lst = new List<string>();
 
-            for (int i = 0; i < gvComp.Rows.Count - 2; i++)
+            for (int i = 0; i < gvComp.Rows.Count - 1; i++)
             {
                 for (int j = 0; j < gvComp.Columns.Count - 1; j++)
                 {
                     if (gvComp.Rows[i].Cells[j].Value == null)
-                        return false;
+                        err = "Error";
                 }
                 lst.Add(gvComp.Rows[i].Cells[0].Value.ToString());
             }
@@ -165,9 +212,9 @@ namespace eiKanji
             foreach (string str in lst)
             {
                 if (rtxtStory.Find(str, 0) < 0)
-                    return false;
+                    err = "Error";
             }
-            return true;
+            return err;
         }
     }
 }
