@@ -67,14 +67,16 @@ namespace eiKanji
 
                     if (dlg == DialogResult.OK)
                     {
+                        DB_Handle.UpdateTable(string.Format(@"DELETE FROM component WHERE kid = {0}", txtID.Text));
+
                         DB_Handle.UpdateTable(string.Format(
-                            "INSERT OR REPLACE INTO kanji VALUES ({0}, '{1}', '{2}', '{3}')",
+                            @"INSERT OR REPLACE INTO kanji VALUES ({0}, '{1}', '{2}', '{3}')",
                             txtID.Text, txtChar.Text, txtKey.Text, rtxtStory.Text));
 
                         for (int i = 0; i < gvComp.Rows.Count - 1; i++)
                         {
                             DB_Handle.UpdateTable(string.Format(
-                                "INSERT OR REPLACE INTO component VALUES ({0}, {1})",
+                                @"INSERT OR REPLACE INTO component VALUES ({0}, {1})",
                                 txtID.Text, gvComp.Rows[i].Cells[2].Value.ToString()));
                         }
                         return true;
@@ -144,14 +146,13 @@ namespace eiKanji
             if (txt.Text.Length < 1)
             {
                 epVal.SetError(txt, "-required");
-                err = "Error";
+                err = txt.Name;
             }
             return err;
         }
 
         private string Comp_Validate()
         {
-            string err = "";
             List<string> lst = new List<string>();
             for (int i = 0; i < gvComp.Rows.Count - 1; i++)
             {
@@ -175,13 +176,15 @@ namespace eiKanji
                                 GROUP BY kid
                                 HAVING count(DISTINCT pid) = {2};",
                                 tmp, tmp, lst.Count));
+
                             if (dt.Rows.Count > 0)
-                                err += "Error";
+                                if (dt.Rows[0][0].ToString() != txtID.Text)
+                                return tmp; //error
                         }
                     }
                 }
             }
-            return err;
+            return "";
         }
 
         private string Keyword_Validate()
@@ -194,7 +197,7 @@ namespace eiKanji
                 for (int j = 0; j < gvComp.Columns.Count - 1; j++)
                 {
                     if (gvComp.Rows[i].Cells[j].Value == null)
-                        err = "Error";
+                        err = "Keyword";
                 }
                 lst.Add(gvComp.Rows[i].Cells[0].Value.ToString());
             }
@@ -202,7 +205,7 @@ namespace eiKanji
             foreach (string str in lst)
             {
                 if (rtxtStory.Find(str, 0) < 0)
-                    err = "Error";
+                    err = str;
             }
             return err;
         }
