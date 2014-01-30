@@ -42,7 +42,7 @@ namespace eiKanji
                 @"SELECT * FROM kanji WHERE id IN
                 ( SELECT pid FROM component WHERE kid ='{0}' ) LIMIT {1}", lblId.Text, colors.Count));
 
-            if (dt.Rows.Count > 0)
+            if (dt.Rows.Count >= 0)
             {
                 int pos;
                 List<KLabel> lst = new List<KLabel>();

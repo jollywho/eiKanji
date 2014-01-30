@@ -71,7 +71,6 @@ namespace eiKanji
                             "INSERT OR REPLACE INTO kanji VALUES ({0}, '{1}', '{2}', '{3}')",
                             txtID.Text, txtChar.Text, txtKey.Text, rtxtStory.Text));
 
-                        //todo: delete old records if removed from gridview
                         for (int i = 0; i < gvComp.Rows.Count - 1; i++)
                         {
                             DB_Handle.UpdateTable(string.Format(
@@ -98,6 +97,8 @@ namespace eiKanji
             //note
             err += Keyword_Validate();
             err += Comp_Validate();
+            if (err.Length > 0)
+                MessageBox.Show(err);
             return err.Length < 1 ? true : false;
         }
 
@@ -152,44 +153,33 @@ namespace eiKanji
         {
             string err = "";
             List<string> lst = new List<string>();
-            List<string> lstx = new List<string>();
             for (int i = 0; i < gvComp.Rows.Count - 1; i++)
             {
+                lst.Clear();
                 lst.Add(gvComp.Rows[i].Cells[2].Value.ToString());
-            }
-            
-            for (int i = 0; i < lst.Count; i++)
-            {       
-                DataTable dt = DB_Handle.GetDataTable(
-                    string.Format(@"SELECT kid FROM component WHERE pid='{0}'",
-                    lst[i]));
-
-                if (dt.Rows.Count > -1)
+                for (int j = 0; j < gvComp.Rows.Count - 1; j++)
                 {
-                    DataTable dx = DB_Handle.GetDataTable(
-                        string.Format(@"SELECT pid FROM component WHERE kid='{0}'",
-                        dt.Rows[0][0]));
-                    
-                    for (int j = 0; j < dx.Rows.Count; j++)
+                    if (j != i)
                     {
-                        if (dt.Rows[0][0].ToString() != txtID.Text)
+                        lst.Add(gvComp.Rows[j].Cells[2].Value.ToString());
+                        if (lst.Count > 1)
                         {
-                            lstx.Add(dx.Rows[j][0].ToString());
+                            string tmp = string.Join(",", lst.ToArray());
+                            DataTable dt = DB_Handle.GetDataTable(
+                                string.Format(
+                                @"SELECT kid FROM component
+                                WHERE pid IN ({0}) AND NOT EXISTS
+	                                (SELECT * FROM component t2
+	                                WHERE t2.kid = component.kid AND
+	                                t2.pid NOT IN ({1}))
+                                GROUP BY kid
+                                HAVING count(DISTINCT pid) = {2};",
+                                tmp, tmp, lst.Count));
+                            if (dt.Rows.Count > 0)
+                                err += "Error";
                         }
                     }
-                    err = CheckList(lst, lstx);
                 }
-            }
-            return err;
-        }
-
-        private string CheckList(List<string> lst_checkfor, List<string> lst)
-        {
-            string err = "";
-            foreach (string item in lst_checkfor)
-            {
-                if (!lst.Contains(item))
-                    err = "Error";
             }
             return err;
         }
