@@ -47,7 +47,7 @@ namespace eiKanji
 
             dt = DB_Handle.GetDataTable(string.Format(
                 @"SELECT * FROM kanji WHERE id IN
-                ( SELECT pid FROM component WHERE kid ='{0}' ) LIMIT 9", txtID.Text));
+                ( SELECT pid FROM component WHERE kid = '{0}' ) LIMIT 9", txtID.Text));
 
             for (int i = 0; i < dt.Rows.Count; i++)
             {
@@ -106,7 +106,7 @@ namespace eiKanji
 
         private void Lookup(string field, string key)
         {
-            DataTable dt = DB_Handle.GetDataTable(string.Format(@"SELECT * FROM kanji WHERE {0}='{1}'", field, key));
+            DataTable dt = DB_Handle.GetDataTable(string.Format(@"SELECT * FROM kanji WHERE {0} = '{1}'", field, key));
 
             if (dt.Rows.Count > 0)
             {
@@ -146,7 +146,7 @@ namespace eiKanji
             if (txt.Text.Length < 1)
             {
                 epVal.SetError(txt, "-required");
-                err = txt.Name;
+                err = txt.Name + Environment.NewLine;
             }
             return err;
         }
@@ -160,27 +160,25 @@ namespace eiKanji
                 lst.Add(gvComp.Rows[i].Cells[2].Value.ToString());
                 for (int j = 0; j < gvComp.Rows.Count - 1; j++)
                 {
-                    if (j != i)
+                    if (lst[0] != gvComp.Rows[j].Cells[2].Value.ToString())
                     {
                         lst.Add(gvComp.Rows[j].Cells[2].Value.ToString());
-                        if (lst.Count > 1)
-                        {
-                            string tmp = string.Join(",", lst.ToArray());
-                            DataTable dt = DB_Handle.GetDataTable(
-                                string.Format(
-                                @"SELECT kid FROM component
-                                WHERE pid IN ({0}) AND NOT EXISTS
-	                                (SELECT * FROM component t2
-	                                WHERE t2.kid = component.kid AND
-	                                t2.pid NOT IN ({1}))
-                                GROUP BY kid
-                                HAVING count(DISTINCT pid) = {2};",
-                                tmp, tmp, lst.Count));
 
-                            if (dt.Rows.Count > 0)
-                                if (dt.Rows[0][0].ToString() != txtID.Text)
-                                return tmp; //error
-                        }
+                        string tmp = string.Join(",", lst.ToArray());
+                        DataTable dt = DB_Handle.GetDataTable(
+                            string.Format(
+                            @"SELECT kid FROM component
+                            WHERE pid IN ({0}) AND NOT EXISTS
+	                            (SELECT * FROM component t2
+	                            WHERE t2.kid = component.kid AND
+	                            t2.pid NOT IN ({1}))
+                            GROUP BY kid
+                            HAVING count(DISTINCT pid) = {2};",
+                            tmp, tmp, lst.Count));
+
+                        if (dt.Rows.Count > 0)
+                            if (dt.Rows[0][0].ToString() != txtID.Text)
+                                return tmp + Environment.NewLine; //error
                     }
                 }
             }
@@ -207,7 +205,7 @@ namespace eiKanji
                 if (rtxtStory.Find(str, 0) < 0)
                     err = str;
             }
-            return err;
+            return err + Environment.NewLine;
         }
     }
 }
