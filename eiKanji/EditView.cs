@@ -39,9 +39,9 @@ namespace eiKanji
 
             for (int i = 0; i < dt.Rows.Count; i++)
             {
-                txtID.Text = dt.Rows[i][0].ToString();
-                txtChar.Text = dt.Rows[i][1].ToString();
-                txtKey.Text = dt.Rows[i][2].ToString();
+                txtID.Text = dt.Rows[i][0].ToString().Trim();
+                txtChar.Text = dt.Rows[i][1].ToString().Trim();
+                txtKey.Text = dt.Rows[i][2].ToString().Trim();
                 rtxtStory.Text = dt.Rows[i][3].ToString();
             }
 
@@ -79,6 +79,11 @@ namespace eiKanji
                                 @"INSERT OR REPLACE INTO component VALUES ({0}, {1})",
                                 txtID.Text, gvComp.Rows[i].Cells[2].Value.ToString()));
                         }
+
+                        DB_Handle.UpdateTable(string.Format(
+                            @"UPDATE kanji SET keyword = '{0}' WHERE story LIKE '%{1}%'",
+                            txtKey.Text, txtID.Text));
+
                         return true;
                     }
                 }
@@ -97,8 +102,11 @@ namespace eiKanji
             err += Txt_Validate(txtChar);
             err += Txt_Validate(txtKey);
             //note
-            err += Keyword_Validate();
-            err += Comp_Validate();
+            if (err.Length < 1)
+            {
+                err += Keyword_Validate();
+                err += Comp_Validate();
+            }
             if (err.Length > 0)
                 MessageBox.Show(err);
             return err.Length < 1 ? true : false;
@@ -146,7 +154,7 @@ namespace eiKanji
             if (txt.Text.Length < 1)
             {
                 epVal.SetError(txt, "-required");
-                err = txt.Name + Environment.NewLine;
+                err = txt.Name.ToUpper() + " required" + Environment.NewLine;
             }
             return err;
         }
@@ -196,7 +204,7 @@ namespace eiKanji
                 for (int j = 0; j < gvComp.Columns.Count - 1; j++)
                 {
                     if (gvComp.Rows[i].Cells[j].Value == null)
-                        err = "Keyword" + Environment.NewLine;
+                        err = "Invalid component" + Environment.NewLine;
                 }
                 lstkey.Add(gvComp.Rows[i].Cells[0].Value.ToString());
                 lstid.Add(gvComp.Rows[i].Cells[2].Value.ToString());
@@ -204,11 +212,17 @@ namespace eiKanji
 
             for (int i = 0; i < lstkey.Count; i++)
             {
-                if (!rtxtStory.Text.Contains(lstkey[i]))
-                    err = lstkey[i] + Environment.NewLine;
-                else
+                if (rtxtStory.Text.Contains(lstkey[i]))
                     rtxtStory.Text = rtxtStory.Text.Replace(lstkey[i], "{" + lstid[i] + "}");
+                else if (!rtxtStory.Text.Contains("{" + lstid[i] + "}"))
+                    err = lstkey[i] + " missing" + Environment.NewLine;
             }
+
+            if (rtxtStory.Text.Contains(txtKey.Text))
+                rtxtStory.Text = rtxtStory.Text.Replace(txtKey.Text, "{" + txtID.Text + "}");
+            else if (!rtxtStory.Text.Contains("{" + txtID.Text + "}"))
+                err = "Keyword missing" + Environment.NewLine;
+
             return err;
         }
     }

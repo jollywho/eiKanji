@@ -51,9 +51,11 @@ namespace eiKanji
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
                     lst.Add(new KLabel(dt.Rows[i], colors[i]));
-                    pos = rtxtStory.Find("{" + dt.Rows[i][0].ToString() + "}");
-                    if (pos >= 0)
+                    string idcomp = "{" + dt.Rows[i][0].ToString() + "}";
+                    if (rtxtStory.Text.Contains(idcomp))
                     {
+                        rtxtStory.Text = rtxtStory.Text.Replace(idcomp, dt.Rows[i][2].ToString());
+                        pos = rtxtStory.Find(dt.Rows[i][2].ToString());
                         rtxtStory.Select(pos, dt.Rows[i][2].ToString().Length);
                         rtxtStory.SelectionBackColor = colors[i];
                         rtxtStory.SelectionColor = Color.White;
