@@ -188,24 +188,28 @@ namespace eiKanji
         private string Keyword_Validate()
         {
             string err = "";
-            List<string> lst = new List<string>();
+            List<string> lstkey = new List<string>();
+            List<string> lstid = new List<string>();
 
             for (int i = 0; i < gvComp.Rows.Count - 1; i++)
             {
                 for (int j = 0; j < gvComp.Columns.Count - 1; j++)
                 {
                     if (gvComp.Rows[i].Cells[j].Value == null)
-                        err = "Keyword";
+                        err = "Keyword" + Environment.NewLine;
                 }
-                lst.Add(gvComp.Rows[i].Cells[0].Value.ToString());
+                lstkey.Add(gvComp.Rows[i].Cells[0].Value.ToString());
+                lstid.Add(gvComp.Rows[i].Cells[2].Value.ToString());
             }
 
-            foreach (string str in lst)
+            for (int i = 0; i < lstkey.Count; i++)
             {
-                if (rtxtStory.Find(str, 0) < 0)
-                    err = str;
+                if (!rtxtStory.Text.Contains(lstkey[i]))
+                    err = lstkey[i] + Environment.NewLine;
+                else
+                    rtxtStory.Text = rtxtStory.Text.Replace(lstkey[i], "{" + lstid[i] + "}");
             }
-            return err + Environment.NewLine;
+            return err;
         }
     }
 }

@@ -31,14 +31,16 @@ namespace eiKanji
         public void SetKey(string key)
         {
             lblKey.Text = key;
-            DataTable dt = DB_Handle.GetDataTable(string.Format(
+            DataTable dx = DB_Handle.GetDataTable(string.Format(
                 @"SELECT * FROM kanji WHERE keyword='{0}' LIMIT 1", key));
-            lblChar.Text = dt.Rows[0][1].ToString();
-            lblId.Text = dt.Rows[0][0].ToString().PadLeft(4, '0');
-            lblKey.Text = dt.Rows[0][2].ToString();
-            rtxtStory.Text = dt.Rows[0][3].ToString();
-            
-            dt = DB_Handle.GetDataTable(string.Format(
+            lblChar.Text = dx.Rows[0][1].ToString();
+            lblId.Text = dx.Rows[0][0].ToString().PadLeft(4, '0');
+            lblKey.Text = dx.Rows[0][2].ToString();
+            rtxtStory.Text = dx.Rows[0][3].ToString();
+
+            string idstr = "{" + dx.Rows[0][0].ToString() + "}";
+
+            DataTable dt = DB_Handle.GetDataTable(string.Format(
                 @"SELECT * FROM kanji WHERE id IN
                 ( SELECT pid FROM component WHERE kid ='{0}' ) LIMIT {1}", lblId.Text, colors.Count));
 
@@ -49,7 +51,7 @@ namespace eiKanji
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
                     lst.Add(new KLabel(dt.Rows[i], colors[i]));
-                    pos = rtxtStory.Find(dt.Rows[i][2].ToString());
+                    pos = rtxtStory.Find("{" + dt.Rows[i][0].ToString() + "}");
                     if (pos >= 0)
                     {
                         rtxtStory.Select(pos, dt.Rows[i][2].ToString().Length);
@@ -58,9 +60,10 @@ namespace eiKanji
                         rtxtStory.SelectionFont = new Font(this.Font, FontStyle.Bold);
                     }
                 }
-                pos = rtxtStory.Find(lblKey.Text, RichTextBoxFinds.WholeWord);
-                if (pos >= 0)
+                if (rtxtStory.Text.Contains(idstr))
                 {
+                    rtxtStory.Text = rtxtStory.Text.Replace(idstr, lblKey.Text);
+                    pos = rtxtStory.Find(lblKey.Text);
                     rtxtStory.Select(pos, lblKey.Text.Length);
                     rtxtStory.SelectionFont = new Font(this.Font, FontStyle.Underline);
                 }
